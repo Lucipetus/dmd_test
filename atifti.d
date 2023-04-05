@@ -74,8 +74,12 @@ Vector3!U cross(U)(Vector3!U a, Vector3!U b)
     return Vector3!U.init;
 }
 
+import somemod;
+
 void main()
 {
+    fooSomeAliasTv(SomeAliasT!(float, char)());
+    fooSomeAliasT(SomeAliasT!float());
     fooAliasT(AliasT!float());
     fooAliasPT(AliasPT!(float)());
     pfooAliasPT(AliasPT!(float*)());
