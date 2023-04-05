@@ -86,6 +86,8 @@ void main()
     fooAliasVar(AliasVar!(float, int, char, string)());
     fooAliasDiverse(AliasDiverse!(char, string, 1, 12)());
 
+    static assert(is(Vector3!float == Vector3!U, U)); // !!! 
+
     Vector!(float, 10) v;
     normalize(v);
     auto vv = cross(Vector3!float(), Vector3!float());
