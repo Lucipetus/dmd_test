@@ -1,4 +1,5 @@
-module test.somemod;
+module somemod;
+static import somemod2;
 
 private struct SomeTempT(U...)
 {
@@ -17,3 +18,5 @@ public void fooSomeAliasT(U)(SomeAliasT!U v)
 {
     static assert(is(U == float));
 }
+
+public alias SomeAlias2(U) = somemod2.SomeTemp2!U;

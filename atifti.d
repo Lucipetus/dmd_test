@@ -97,7 +97,22 @@ void main()
     static assert(is(typeof(vv) == Vector3!float));
     static assert(isInstanceOf!(Vector3, Vector3!float));
 
+    static assert(isInstanceOf!(SomeAlias2, SomeAlias2!float));
+
+    void fooSomeAlias2(U)(SomeAlias2!U v)
+    {
+
+    }
+
+    fooSomeAlias2(SomeAlias2!char());
+
     import std.regex;
 
-    // static assert(isInstanceOf!(Regex, Regex!char));
+    void fooRegex(U)(Regex!U)
+    {
+
+    }
+
+    fooRegex(Regex!char());
+    static assert(isInstanceOf!(Regex, Regex!char));
 }
