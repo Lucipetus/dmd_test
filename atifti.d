@@ -48,10 +48,10 @@ struct TempDiverse(X, Y, size_t Z, alias W)
 
 alias AliasDiverse(P, Q, alias R, size_t S) = TempDiverse!(Q, P, S, R);
 
-void fooAliasDiverse(A, B, alias C, size_t D)(AliasDiverse!(A, B, C, D) v)
+void fooAliasDiverse(A, B, alias C, size_t D)(AliasDiverse!(B, A, C, D) v)
 {
-    static assert(is(A == char));
-    static assert(is(B == string));
+    static assert(is(A == string));
+    static assert(is(B == char));
     static assert(C == 1);
     static assert(D == 12);
     static assert(is(typeof(v) == TempDiverse!(string, char, 12, 1)));
@@ -91,8 +91,13 @@ void main()
     Vector!(float, 10) v;
     normalize(v);
     auto vv = cross(Vector3!float(), Vector3!float());
+
+    import std.traits;
+
     static assert(is(typeof(vv) == Vector3!float));
-    // import std.regex;
-    // import std.traits;
-    // static assert(isInstanceOf!(Regex, Regex!char)); // working on it
+    static assert(isInstanceOf!(Vector3, Vector3!float));
+
+    import std.regex;
+
+    // static assert(isInstanceOf!(Regex, Regex!char));
 }
