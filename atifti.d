@@ -115,4 +115,18 @@ void main()
 
     fooRegex(Regex!char());
     static assert(isInstanceOf!(Regex, Regex!char));
+
+    {
+        struct TestType(T, Q)
+        {
+        }
+
+        alias TestAliasA(A, B) = TestType!(A, B);
+        alias TestAlias(T, Q) = TestAliasA!(Q, T);
+        void test(X, Y)(TestAliasA!(X, Y) v)
+        {
+        }
+
+        test(TestAlias!(float, char)());
+    }
 }
