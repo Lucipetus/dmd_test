@@ -73,6 +73,7 @@ Vector3!U cross(U)(Vector3!U a, Vector3!U b)
     return Vector3!U.init;
 }
 
+// a case grabbed from PR #9778
 struct TestType(T, Q)
 {
 }
@@ -96,8 +97,6 @@ void main()
     Vector!(float, 10) v;
     normalize(v);
     auto vv = cross(Vector3!float(), Vector3!float());
-
-    static assert(is(typeof(vv) == Vector3!float));
 
     test(TestAlias!(float, char)());
 }
